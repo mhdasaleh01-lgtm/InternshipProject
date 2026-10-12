@@ -1,0 +1,25 @@
+@model UserFormViewModel
+<div asp-validation-summary="All" class="validation" role="alert"></div>
+<div class="field">
+    <label asp-for="Username"></label>
+    <input asp-for="Username" autocomplete="off" maxlength="50" required />
+</div>
+<div class="field">
+    <label asp-for="FullName"></label>
+    <input asp-for="FullName" maxlength="100" required />
+</div>
+<div class="field">
+    <label asp-for="Password"></label>
+    <input asp-for="Password" autocomplete="new-password" minlength="8" maxlength="100" aria-describedby="password-help" />
+    <small id="password-help">At least 8 characters. When editing, leave blank to keep the current password.</small>
+</div>
+<div class="field">
+    <label asp-for="RoleId"></label>
+    <select asp-for="RoleId" asp-items="Model.Roles" required>
+        <option value="">Select a role</option>
+    </select>
+</div>
+<div class="actions">
+    <button type="submit" class="button">Save</button>
+    <a asp-action="Index">Cancel</a>
+</div>

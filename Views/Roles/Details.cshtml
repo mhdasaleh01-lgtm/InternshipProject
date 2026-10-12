@@ -1,0 +1,14 @@
+@model Role
+@{
+    ViewData["Title"] = "Role details";
+}
+<h1>Role details</h1>
+<div class="card form-card">
+    <dl>
+        <dt>ID</dt><dd>@Model.Id</dd>
+        <dt>Name</dt><dd>@Model.Name</dd>
+        <dt>Product permissions</dt>
+        <dd>@(Model.Name == Role.Write ? "Create, list, details, edit and delete" : "List and details")</dd>
+    </dl>
+    <a asp-action="Index">Back to roles</a>
+</div>

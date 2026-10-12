@@ -1,0 +1,26 @@
+@model IReadOnlyList<AppUser>
+@{
+    ViewData["Title"] = "Users";
+}
+<div class="page-heading">
+    <h1>Users</h1>
+    <a asp-action="Create" class="button">Create user</a>
+</div>
+<div class="table-wrap">
+    <table>
+        <thead><tr><th scope="col">Username</th><th scope="col">Full name</th><th scope="col">Role</th><th scope="col">Actions</th></tr></thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.Username</td><td>@user.FullName</td><td><span class="badge">@user.Role.Name</span></td>
+                    <td class="actions">
+                        <a asp-action="Details" asp-route-id="@user.Id">Details</a>
+                        <a asp-action="Edit" asp-route-id="@user.Id">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@user.Id" class="danger-link">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

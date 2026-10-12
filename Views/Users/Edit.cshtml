@@ -1,0 +1,8 @@
+@model UserFormViewModel
+@{
+    ViewData["Title"] = "Edit user";
+}
+<h1>Edit user</h1>
+<form asp-action="Edit" asp-route-id="@ViewData["UserId"]" method="post" class="card form-card">
+    <partial name="_Form" model="Model" />
+</form>

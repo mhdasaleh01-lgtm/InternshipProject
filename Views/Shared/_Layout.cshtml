@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - Internship Project</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav aria-label="Main navigation" class="container nav">
+            <a class="brand" asp-controller="Products" asp-action="Index">Internship Project</a>
+            @if (User.Identity?.IsAuthenticated == true)
+            {
+                <a asp-controller="Products" asp-action="Index">Products</a>
+                @if (User.IsInRole(Role.Write))
+                {
+                    <a asp-controller="Users" asp-action="Index">Users</a>
+                }
+                <a asp-controller="Roles" asp-action="Index">Roles</a>
+                <span class="session">@User.Identity.Name <span class="badge">@(User.IsInRole(Role.Write) ? Role.Write : Role.Read)</span></span>
+                <form asp-controller="Account" asp-action="Logout" method="post">
+                    <button class="button secondary" type="submit">Log out</button>
+                </form>
+            }
+        </nav>
+    </header>
+    <main class="container">
+        @if (TempData["Message"] is string message)
+        {
+            <div class="notice" role="status">@message</div>
+        }
+        @RenderBody()
+    </main>
+    <footer class="container">Users, roles and products · ASP.NET Core MVC</footer>
+</body>
+</html>

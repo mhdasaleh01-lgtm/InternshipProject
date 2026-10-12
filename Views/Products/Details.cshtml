@@ -1,0 +1,19 @@
+@model Product
+@{
+    ViewData["Title"] = "Product details";
+}
+<h1>Product details</h1>
+<div class="card form-card">
+    <dl>
+        <dt>Name</dt><dd>@Model.Name</dd>
+        <dt>Price</dt><dd>@Model.Price.ToString("N2")</dd>
+        <dt>Description</dt><dd class="description">@(string.IsNullOrWhiteSpace(Model.Description) ? "No description." : Model.Description)</dd>
+    </dl>
+    <div class="actions">
+        @if (User.IsInRole(Role.Write))
+        {
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="button">Edit</a>
+        }
+        <a asp-action="Index">Back to products</a>
+    </div>
+</div>

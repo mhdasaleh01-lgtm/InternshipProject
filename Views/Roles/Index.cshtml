@@ -1,0 +1,21 @@
+@model IReadOnlyList<Role>
+@{
+    ViewData["Title"] = "Roles";
+}
+<h1>Roles</h1>
+<p class="muted">Roles are read-only. Each user is assigned one role.</p>
+<div class="table-wrap">
+    <table>
+        <thead><tr><th scope="col">ID</th><th scope="col">Role</th><th scope="col">Product permissions</th><th scope="col">Actions</th></tr></thead>
+        <tbody>
+            @foreach (var role in Model)
+            {
+                <tr>
+                    <td>@role.Id</td><td>@role.Name</td>
+                    <td>@(role.Name == Role.Write ? "Create, list, details, edit and delete" : "List and details")</td>
+                    <td><a asp-action="Details" asp-route-id="@role.Id">Details</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

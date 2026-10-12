@@ -1,0 +1,14 @@
+@model AppUser
+@{
+    ViewData["Title"] = "Delete user";
+}
+<h1>Delete user</h1>
+<div class="card form-card">
+    <div asp-validation-summary="All" class="validation" role="alert"></div>
+    <p>Delete <strong>@Model.Username</strong> (@Model.FullName)? This cannot be undone.</p>
+    <p>Role: @Model.Role.Name</p>
+    <form asp-action="Delete" asp-route-id="@Model.Id" method="post" class="actions">
+        <button type="submit" class="button danger">Delete</button>
+        <a asp-action="Index">Cancel</a>
+    </form>
+</div>

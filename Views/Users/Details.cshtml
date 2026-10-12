@@ -1,0 +1,17 @@
+@model AppUser
+@{
+    ViewData["Title"] = "User details";
+}
+<h1>User details</h1>
+<div class="card form-card">
+    <dl>
+        <dt>ID</dt><dd>@Model.Id</dd>
+        <dt>Username</dt><dd>@Model.Username</dd>
+        <dt>Full name</dt><dd>@Model.FullName</dd>
+        <dt>Role</dt><dd>@Model.Role.Name</dd>
+    </dl>
+    <div class="actions">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="button">Edit</a>
+        <a asp-action="Index">Back to users</a>
+    </div>
+</div>
